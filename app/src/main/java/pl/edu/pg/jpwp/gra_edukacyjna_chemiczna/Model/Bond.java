@@ -42,17 +42,15 @@ public class Bond {
     }
 
     boolean intersects(FloatPoint a, FloatPoint b) {
-
-        //System.out.println("cut line from: "+a+" to: "+b);
-
         Point c = new Point((int)getBeginningX(), (int)getBeginningY());
         Point d = new Point((int)getEndX(), (int)getEndY());
         float denominator = ((b.x - a.x) * (d.y - c.y)) - ((b.y - a.y) * (d.x - c.x));
         float numerator1 = ((a.y - c.y) * (d.x - c.x)) - ((a.x - c.x) * (d.y - c.y));
         float numerator2 = ((a.y - c.y) * (b.x - a.x)) - ((a.x - c.x) * (b.y - a.y));
 
-        // Detect coincident lines (has a problem, read below)
-        if (denominator == 0) return numerator1 == 0 && numerator2 == 0;
+        if (denominator == 0) {
+            return (numerator1 == 0 && numerator2 == 0);
+        }
 
         float r = numerator1 / denominator;
         float s = numerator2 / denominator;
