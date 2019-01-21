@@ -17,7 +17,7 @@ import static pl.edu.pg.jpwp.gra_edukacyjna_chemiczna.Common.Constants.SCREEN_WI
 public class Atom implements Enums, Serializable {
     private float x, y;
     private int id;
-    private short valence = 4;//TODO:fix it
+    private short valence = 4;
     private Enums.Element element;
     private List<Integer> connections;
 
@@ -82,8 +82,6 @@ public class Atom implements Enums, Serializable {
         return rect.contains(x, y);
     }
 
-    //TODO:Future issue: change hitbox from rect to circle, fast implementation here
-    //TODO:add DrawableAtom.SCALE
     public Rect getHitBox(){
         return new Rect((int) (this.getX() - DrawableAtom.getRadius()), (int) (this.getY() - DrawableAtom.getRadius()), (int) (this.getX() + DrawableAtom.getRadius()), (int) (this.getY() + DrawableAtom.getRadius()));
     }
